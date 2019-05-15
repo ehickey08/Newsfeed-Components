@@ -11,15 +11,17 @@ class Article {
     // Set a click handler on the expandButton reference, calling the expandArticle method.
     
     this.expandButton.addEventListener('click', () => this.expandArticle(event));
+
   }
 
   expandArticle(event) {
     // Using our reference to the domElement, toggle a class to expand or hide the article.
     this.article.classList.toggle('article-open');
     this.expandButton.textContent = (this.expandButton.textContent === 'Click to Expand') ? 'Click to Close' : 'Click to Expand';
-    console.log(event);
     event.stopPropagation();
   }
+
+
 }
 
 /* START HERE: 
@@ -32,3 +34,56 @@ class Article {
 
 let articles = document.querySelectorAll('.article');
 articles.forEach(article => new Article(article));
+
+
+//Stretch Attempt
+//Each article has a heading, date, paras, span for expand
+
+class ArticleWithoutHTMl {
+    constructor({headline, date, paraOne, paraTwo, paraThree}){
+        this.parentForDiv = document.querySelector('.articles');
+        this.parent = document.createElement('div');
+        this.parent.classList.add('article');
+        this.parentForDiv.appendChild(this.parent);
+        this.headerEl = document.createElement('h2');
+        this.headerEl.textContent = headline;
+        this.dateEl = document.createElement('p')
+        this.dateEl.classList.add('date');
+        this.dateEl.textContent = date;
+        this.paraOne = document.createElement('p');
+        this.paraOne.textContent = paraOne;
+        this.paraTwo = document.createElement('p');
+        this.paraTwo.textContent = paraTwo;
+        this.paraThree = document.createElement('p');
+        this.paraThree.textContent = paraThree;
+        this.expandButton = document.createElement('span')
+        this.expandButton.classList.add('expandButton');
+        this.expandButton.textContent = 'Click to Expand';
+        this.parent.prepend(this.expandButton);
+        this.parent.prepend(this.paraThree);
+        this.parent.prepend(this.paraTwo);
+        this.parent.prepend(this.paraOne);
+        this.parent.prepend(this.dateEl);
+        this.parent.prepend(this.headerEl);
+        
+        this.expandButton.addEventListener('click', () => this.expandNewArticle(event));
+
+  }
+
+  expandNewArticle(event) {
+    // Using our reference to the domElement, toggle a class to expand or hide the article.
+    this.parent.classList.toggle('article-open');
+    this.expandButton.textContent = (this.expandButton.textContent === 'Click to Expand') ? 'Click to Close' : 'Click to Expand';
+    event.stopPropagation();
+  }
+
+    
+}
+
+let test = new ArticleWithoutHTMl ({
+    headline: 'I do not exist in the HTML file',
+    date: 'May 30th, 2020',
+    paraOne: 'TEST TEST TEST TEST TEST TEST',
+    paraTwo:'TEST TEST TEST TEST TEST TEST',
+    paraThree: 'TEST TEST TEST TEST TEST TEST'
+})

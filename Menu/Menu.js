@@ -5,11 +5,11 @@ const toggleMenu = (event) => {
   if(menu.classList.contains('slide-right')){
       menu.classList.remove('slide-right');
       menu.classList.add('slide-left');
-      console.log('first', menu);
+    
     } else {
         menu.classList.add('slide-right');
         menu.classList.remove('slide-left');
-        console.log('second', menu);
+        
     }
     
     event.stopPropagation();
