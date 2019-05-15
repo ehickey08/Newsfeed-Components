@@ -64,6 +64,28 @@
 .menu--open {
   display: block;
 }
+@keyframes slide-right {
+  0% {
+    transform: translateX(-350px);
+  }
+  100% {
+    transform: translateX(0px);
+  }
+}
+.slide-right {
+  animation: slide-right 0.5s ease-in both;
+}
+@keyframes slide-left {
+  0% {
+    transform: translateX(0px);
+  }
+  100% {
+    transform: translateX(-350px);
+  }
+}
+.slide-left {
+  animation: slide-left 0.5s ease-in both;
+}
 .articles {
   margin-top: 95px;
 }
@@ -103,7 +125,8 @@
   background-color: white;
 }
 .article-open {
-  height: 400px;
+  display: block;
+  height: fit-content;
 }
 html,
 body {
